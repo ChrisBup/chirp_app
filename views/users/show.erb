@@ -1,7 +1,17 @@
-<nav>
-  <a href="/">
-    <h4>
-      HOME
-    </h4>
-  </a>
-</nav>
+<h1>ALL YOUR CHIRPS</h1>
+
+<h2><%= @user.username %></h2>
+
+<% @user.chirps.each do |chirp| %>
+  <p>
+    <%= chirp.message %>
+    <form action="/users/<%= @user.id %>/chirps/<%= chirp.id %>" method='post'>
+      <input type="hidden" name='_method' value='delete'>
+      <button type='submit'>DELETE CHIRP</button>
+    </form>
+  </p>
+<% end %>
+
+<form action="/users/<%= @user.id %>/chirps/new" method='get'>
+  <button type='submit'>CHIRP</button>
+</form>
