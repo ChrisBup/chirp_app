@@ -1,0 +1,16 @@
+<h3>HOME IS WHERE THE CHIRPS ARE</h3>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <a href="/users/<%= user.id %>">
+        <%= user.username %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<form action="/users/new" method='get'>
+  <button type='submit'>
+    CREATE USER
+  </button>
+</form>
